@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Build Application') {
             steps {
-//                    build job: 'Package_Application'
-                sh 'mvn -f java-tomcat-sample/pom.xml clean package'
+                   build job: 'Package_Application'
+//                 sh 'mvn -f java-tomcat-sample/pom.xml clean package'
             }
             post {
                 success {
@@ -13,11 +13,11 @@ pipeline {
                 }
             }
         }
-//         stage('Deploy in Staging Environment'){
-//             steps{
-//                 build job: 'Deploy_Staging'
-//             } 
-//         }
+        stage('Deploy in Staging Environment'){
+            steps{
+                build job: 'Deploy_Staging'
+            } 
+        }
 //         stage('Deploy to Production'){
 //             steps{
 //                 timeout(time:5, unit:'DAYS'){
